@@ -31,8 +31,8 @@ const FinalCard = ({ image, teacherName, studentName, studentClass, onClose }) =
 
   return (
     <div className="text-left relative">
-      <div id="final-card" className="relative inline-block">
-      {/* Text Container */}
+  <div id="final-card" className="relative inline-block p-4 border-4 border-white rounded-md bg-white">
+  {/* Text Container */}
   <div className="mb-4 flex items-center justify-between p-2 bg-white rounded-md">
     <div>
       <h2 className="text-xl font-bold">To {teacherName}</h2>
@@ -43,58 +43,19 @@ const FinalCard = ({ image, teacherName, studentName, studentClass, onClose }) =
   </div>
 
   {/* Image Container */}
-  <div className="relative inline-block p-2 bg-white rounded-md">
+  <div className="relative inline-block">
     <img src={image} alt="Final Card" className="w-full h-auto rounded-md" />
   </div>
-      </div>
+</div>
+
 
       <button
         onClick={handleDownload}
-        className="mt-4 p-2 bg-green-500 text-white rounded-md relative overflow-hidden"
+        className="mt-4 p-2 bg-black text-white rounded-md relative overflow-hidden"
       >
         Download Card
 
-        {/* Sparkle Effect */}
-        <AnimatePresence>
-          {showSparkles && (
-            <motion.div
-              className="absolute inset-0 flex justify-center items-center"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1.5, opacity: 1 }}
-              exit={{ scale: 2, opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="relative">
-                {[...Array(5)].map((_, index) => (
-                  <motion.div
-                    key={index}
-                    className="absolute w-4 h-4 bg-yellow-400 rounded-full"
-                    initial={{
-                      x: 0,
-                      y: 0,
-                      scale: 0.5,
-                      opacity: 0,
-                    }}
-                    animate={{
-                      x: Math.random() * 100 - 50,
-                      y: Math.random() * 100 - 50,
-                      scale: 1,
-                      opacity: 1,
-                    }}
-                    exit={{
-                      scale: 0,
-                      opacity: 0,
-                    }}
-                    transition={{
-                      duration: 0.5,
-                      ease: 'easeOut',
-                    }}
-                  />
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        
       </button>
 
       {/* Pop-up Message */}

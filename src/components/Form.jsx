@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
 
 const Form = ({ image, onSubmit }) => {
   const [teacherName, setTeacherName] = useState('');
   const [studentName, setStudentName] = useState('');
   const [studentClass, setStudentClass] = useState('');
   const [charCount, setCharCount] = useState({ teacherName: 0, studentName: 0, studentClass: 0 });
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    // Check if all fields are filled
+    if (teacherName && studentName && studentClass) {
+      setIsFormValid(true);
+    } else {
+      setIsFormValid(false);
+    }
+  }, [teacherName, studentName, studentClass]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,6 +46,7 @@ const Form = ({ image, onSubmit }) => {
           onChange={(e) => handleInputChange(e, setTeacherName)}
           className="p-2 border border-gray-300 rounded-md"
           whileFocus={{ scale: 1.05 }}
+          required
         />
        
         <motion.input
@@ -47,6 +57,7 @@ const Form = ({ image, onSubmit }) => {
           onChange={(e) => handleInputChange(e, setStudentName)}
           className="p-2 border border-gray-300 rounded-md"
           whileFocus={{ scale: 1.05 }}
+          required
         />
         
         <motion.input
@@ -57,17 +68,17 @@ const Form = ({ image, onSubmit }) => {
           onChange={(e) => handleInputChange(e, setStudentClass)}
           className="p-2 border border-gray-300 rounded-md"
           whileFocus={{ scale: 1.05 }}
+          required
         />
       
-        <motion.button
-          type="submit"
-          className="p-2 bg-blue-500 text-white rounded-md"
-          whileHover={{ scale: 1.1, backgroundColor: '#4F46E5' }}
-          whileTap={{ scale: 0.9 }}
-          onClick={() => setTimeout(() => onSubmit(teacherName, studentName, studentClass), 200)}
-        >
-          Let's build your card
-        </motion.button>
+      <button
+  type="submit"
+  className={`p-2 text-white rounded-md ${isFormValid ? 'bg-black' : 'bg-gray-300 cursor-not-allowed'}`}
+  disabled={!isFormValid}
+>
+  Let's build your card
+</button>
+
       </form>
       <motion.div
         className="confetti"
@@ -76,7 +87,7 @@ const Form = ({ image, onSubmit }) => {
         animate="animate"
         exit="exit"
       >
-        🎉
+        🎉 Fill all fields.
       </motion.div>
     </motion.div>
   );
