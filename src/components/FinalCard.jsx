@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import html2canvas from 'html2canvas';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const FinalCard = ({ image, teacherName, studentName, studentClass }) => {
+const FinalCard = ({ image, teacherName, studentName, studentClass, onClose }) => {
   const [showSparkles, setShowSparkles] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
@@ -17,7 +17,11 @@ const FinalCard = ({ image, teacherName, studentName, studentClass }) => {
       link.download = 'teachers-day-card.png';
       link.href = canvas.toDataURL();
       link.click();
+
+      onClose(); 
+
     });
+
   };
 
   return (

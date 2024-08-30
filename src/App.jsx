@@ -127,7 +127,8 @@ const App = () => {
             image={selectedImage} 
             teacherName={finalData.teacherName} 
             studentName={finalData.studentName} 
-            studentClass={finalData.studentClass} 
+            studentClass={finalData.studentClass}
+            onClose={handleCloseFinalCardModal} 
           />
         )}
       </Modal>
