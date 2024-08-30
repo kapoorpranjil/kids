@@ -6,6 +6,11 @@ const FinalCard = ({ image, teacherName, studentName, studentClass, onClose }) =
   const [showSparkles, setShowSparkles] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
+  const emojis = ['✏️', '❤️', '🐱', '🐶', '🐾'];
+  
+  // Select a random emoji
+  const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+
   const handleDownload = () => {
     setShowSparkles(true);
     setShowPopup(true);
@@ -28,16 +33,19 @@ const FinalCard = ({ image, teacherName, studentName, studentClass, onClose }) =
     <div className="text-left relative">
       <div id="final-card" className="relative inline-block">
         {/* Text Container */}
-        <div className="mb-4">
+        <div className="mb-4 flex items-center justify-between">
+        <div>
           <h2 className="text-xl font-bold">To {teacherName}</h2>
           <p>From {studentName}</p>
-          <p>Class : {studentClass}</p>
+          <p>Class: {studentClass}</p>
         </div>
+        <span className="text-2xl ml-2">{randomEmoji}</span>
+      </div>
 
-        {/* Image Container */}
-        <div className="relative inline-block">
-          <img src={image} alt="Final Card" className="w-full h-auto" />
-        </div>
+      {/* Image Container */}
+      <div className="relative inline-block">
+        <img src={image} alt="Final Card" className="w-full h-auto" />
+      </div>
       </div>
 
       <button
@@ -108,3 +116,4 @@ const FinalCard = ({ image, teacherName, studentName, studentClass, onClose }) =
 };
 
 export default FinalCard;
+//og

@@ -4,14 +4,17 @@ import ImageCard from './components/ImageCard';
 import Form from './components/Form';
 import FinalCard from './components/FinalCard';
 import Modal from './components/Modal';
-import image1 from './assets/image1.jpeg';
-import image3 from './assets/image3.jpeg';
-import image4 from './assets/image4.jpeg';
+import image1 from './assets/image1.png';
+import image3 from './assets/image3.png';
+import image4 from './assets/image4.png';
 import image2 from './assets/image2.png';
 import image5 from './assets/image5.png';
 import image6 from './assets/image6.png';
 import image7 from './assets/image7.png';
 import image8 from './assets/image8.png';
+import image9 from './assets/image9.png';
+import image10 from './assets/image10.png';
+import image11 from './assets/image11.png';
 
 const images = [
   image1,
@@ -22,6 +25,9 @@ const images = [
   image6,
   image7,
   image8,
+  image9,
+  image10,
+  image11,
 ];
 
 const App = () => {
@@ -51,26 +57,42 @@ const App = () => {
     setIsFinalCardModalOpen(false);
   };
 
+  const shakeTransition = {
+    duration: 0.5,
+    repeat: Infinity,
+    repeatType: 'loop',
+    ease: 'easeInOut',
+  };
+  
+  const shakeVariants = {
+    shake: {
+       // Diagonal shake along the x-axis
+      y: [0, 4, -4, 2, -2, 0], // Diagonal shake along the y-axis
+    },
+  };
+
   return (
     <div className="p-4 max-w-screen-lg mx-auto">
-      <motion.h1
-        className="text-xl md:text-3xl font-extrabold text-center mb-4 md:mb-6 text-blue-600"
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ type: 'spring', stiffness: 120, delay: 0.1 }}
-      >
-        🎉 Happy Teacher's Day! 🎉
-      </motion.h1>
-      <motion.h2
-        className="text-lg md:text-2xl font-semibold text-center mb-4 text-blue-400"
-        initial={{ x: -100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ type: 'spring', stiffness: 120, delay: 0.3 }}
-      >
-        Create a Special Surprise Card for Your Teacher!
-      </motion.h2>
+     
+     <motion.h1
+  className="text-2xl md:text-5xl font-extrabold text-center mb-4 md:mb-6 text-black-600 whitespace-nowrap"
+  initial={{ y: -50, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{ type: 'spring', stiffness: 120, delay: 0.1 }}
+>
+  Happy Teacher's Day
+  <motion.span
+    className="inline-block"
+    variants={shakeVariants}
+    animate="shake"
+    transition={shakeTransition}
+  >
+    !
+  </motion.span>
+</motion.h1>
+
       <motion.h3
-        className="text-md md:text-lg font-medium text-center mb-6 text-green-500"
+        className="text-md md:text-lg font-medium text-center mb-6 text-slate-500 "
         initial={{ x: 100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 120, delay: 0.5 }}
@@ -111,7 +133,7 @@ const App = () => {
 
       {/* Add some additional content or padding for mobile view */}
       <div className="md:hidden mt-6 text-center">
-        <p className="text-gray-500">Select a card to get started!</p>
+        <p className="text-gray-500">Swipe & Select by tapping on a card to get started!</p>
         <p className="text-gray-500">Then you can create a special card for your teacher.</p>
       </div>
 
