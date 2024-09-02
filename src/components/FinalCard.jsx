@@ -39,7 +39,8 @@ const FinalCard = ({ image, teacherName, studentName, studentClass, onClose }) =
       <div id="final-card" className="relative inline-block p-4 border-4 border-white rounded-md bg-white">
         {/* Teacher Name Container */}
         <div className="mb-4 p-2 bg-white rounded-md">
-          <h2 className="text-xl font-bold" style={{ color: textColor }}>To, {teacherName}</h2>
+          <h2 className="text-xl font-bold" style={{ color: textColor }}>To,</h2>
+          <h2 className="text-xl font-bold" style={{ color: textColor }}>  {teacherName}</h2>
         </div>
 
         {/* Image Container */}
@@ -49,8 +50,9 @@ const FinalCard = ({ image, teacherName, studentName, studentClass, onClose }) =
 
         {/* Student Info Container */}
         <div className="mt-4 p-2 bg-white rounded-md text-right font-bold">
-          <p style={{ color: textColor }}>From {studentName}</p>
-          <p style={{ color: textColor }}>Class: {studentClass}</p>
+          <p style={{ color: textColor }}>From </p>
+          <p style={{ color: textColor }}>{studentName}</p>
+          <p style={{ color: textColor }}> {studentClass}</p>
         </div>
       </div>
 
