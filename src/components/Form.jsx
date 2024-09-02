@@ -19,7 +19,7 @@ const Form = ({ image, onSubmit }) => {
 
   useEffect(() => {
     // Check if all fields are filled and phone number has at least 10 digits
-    if (teacherName && studentName && studentClass && phoneNumber.length >= 10) {
+    if (teacherName && studentName && studentClass && phoneNumber.length == 10) {
       setIsFormValid(true);
     } else {
       setIsFormValid(false);
