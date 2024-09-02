@@ -6,11 +6,6 @@ const FinalCard = ({ image, teacherName, studentName, studentClass, onClose }) =
   const [showSparkles, setShowSparkles] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
-  const emojis = ['✏️', '❤️', '🐱', '🐶', '🐾'];
-  
-  // Select a random emoji
-  const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
-
   const handleDownload = () => {
     setShowSparkles(true);
     setShowPopup(true);
@@ -39,7 +34,7 @@ const FinalCard = ({ image, teacherName, studentName, studentClass, onClose }) =
       <p>From {studentName}</p>
       <p>Class: {studentClass}</p>
     </div>
-    <span className="text-2xl ml-2">{randomEmoji}</span>
+
   </div>
 
   {/* Image Container */}
@@ -49,14 +44,14 @@ const FinalCard = ({ image, teacherName, studentName, studentClass, onClose }) =
 </div>
 
 
-      <button
-        onClick={handleDownload}
-        className="mt-4 p-2 bg-black text-white rounded-md relative overflow-hidden"
-      >
-        Download Card
-
-        
-      </button>
+<div className="flex justify-center mt-4">
+  <button
+    onClick={handleDownload}
+    className="p-2 bg-black text-white rounded-md relative overflow-hidden"
+  >
+    Download Card
+  </button>
+</div>
 
       {/* Pop-up Message */}
       <AnimatePresence>

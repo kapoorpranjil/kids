@@ -72,33 +72,36 @@ const App = () => {
   };
 
   return (
-    <div className="p-4 max-w-screen-lg mx-auto">
-     
-     <motion.h1
-  className="text-2xl md:text-5xl font-extrabold text-center mb-4 md:mb-6 text-black-600 whitespace-nowrap"
+    <div className="p-4 max-w-screen-lg mx-auto text-center mt-8">
+  <motion.h1
+  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-4 sm:mb-6 md:mb-8 lg:mb-10 text-black-600"
   initial={{ y: -50, opacity: 0 }}
   animate={{ y: 0, opacity: 1 }}
   transition={{ type: 'spring', stiffness: 120, delay: 0.1 }}
 >
-  Happy Teacher's Day
-  <motion.span
-    className="inline-block"
-    variants={shakeVariants}
-    animate="shake"
-    transition={shakeTransition}
-  >
-    !
-  </motion.span>
+  We understand your bond with your teacher.
 </motion.h1>
 
+ <motion.h3
+  className="text-sm sm:text-md md:text-lg lg:text-xl font-medium mb-4 sm:mb-6 md:mb-8 lg:mb-10 text-slate-500 px-4 sm:px-6 md:px-8 lg:px-10"
+  initial={{ x: -100, opacity: 0 }}
+  animate={{ x: 0, opacity: 1 }}
+  transition={{ type: 'spring', stiffness: 120, delay: 0.3 }}
+>
+  Thank them for their selflessness. Wish them a very happy Teachers' Day.
+</motion.h3>
+
+
       <motion.h3
-        className="text-md md:text-lg font-medium text-center mb-6 text-slate-500 "
-        initial={{ x: 100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ type: 'spring', stiffness: 120, delay: 0.5 }}
-      >
-        Choose Your Favorite Card and Show Your Appreciation!
-      </motion.h3>
+  className="text-xs sm:text-sm md:text-base lg:text-lg font-medium mb-3 sm:mb-5 md:mb-6 lg:mb-8 text-slate-500 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto"
+  initial={{ x: 100, opacity: 0 }}
+  animate={{ x: 0, opacity: 1 }}
+  transition={{ type: 'spring', stiffness: 120, delay: 0.5 }}
+>
+  Choose any customizable poster you like and share it with your teachers.
+</motion.h3>
+
+
       <div className="relative">
         {/* Container for mobile view */}
         <div className="md:hidden overflow-x-auto whitespace-nowrap pb-4">
