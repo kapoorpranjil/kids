@@ -3,6 +3,7 @@ import html2canvas from 'html2canvas';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const FinalCard = ({ image, teacherName, studentName, studentClass, onClose }) => {
+  const [textColor, setTextColor] = useState('#000000'); // Default color is black
   const [showSparkles, setShowSparkles] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
@@ -19,39 +20,48 @@ const FinalCard = ({ image, teacherName, studentName, studentClass, onClose }) =
       link.click();
 
       onClose(); 
-
     });
-
   };
 
   return (
     <div className="text-left relative">
-  <div id="final-card" className="relative inline-block p-4 border-4 border-white rounded-md bg-white">
-  {/* Text Container */}
-  <div className="mb-4 flex items-center justify-between p-2 bg-white rounded-md">
-    <div>
-      <h2 className="text-xl font-bold">To {teacherName}</h2>
-      <p>From {studentName}</p>
-      <p>Class: {studentClass}</p>
-    </div>
+      <div className="mb-4">
+        <label htmlFor="colorPicker" className="mr-2">Choose the color:</label>
+        <input
+          id="colorPicker"
+          type="color"
+          value={textColor}
+          onChange={(e) => setTextColor(e.target.value)}
+          className="cursor-pointer"
+        />
+      </div>
 
-  </div>
+      <div id="final-card" className="relative inline-block p-4 border-4 border-white rounded-md bg-white">
+        {/* Teacher Name Container */}
+        <div className="mb-4 p-2 bg-white rounded-md">
+          <h2 className="text-xl font-bold" style={{ color: textColor }}>To, {teacherName}</h2>
+        </div>
 
-  {/* Image Container */}
-  <div className="relative inline-block">
-    <img src={image} alt="Final Card" className="w-full h-auto rounded-md" />
-  </div>
-</div>
+        {/* Image Container */}
+        <div className="relative inline-block">
+          <img src={image} alt="Final Card" className="w-full h-auto rounded-md" />
+        </div>
 
+        {/* Student Info Container */}
+        <div className="mt-4 p-2 bg-white rounded-md text-right font-bold">
+          <p style={{ color: textColor }}>From {studentName}</p>
+          <p style={{ color: textColor }}>Class: {studentClass}</p>
+        </div>
+      </div>
 
-<div className="flex justify-center mt-4">
-  <button
-    onClick={handleDownload}
-    className="p-2 bg-black text-white rounded-md relative overflow-hidden"
-  >
-    Download Card
-  </button>
-</div>
+      <div className="flex justify-center mt-4">
+        <button
+          onClick={handleDownload}
+          className="p-2 bg-black text-white rounded-md relative overflow-hidden"
+        >
+          Download Card
+        </button>
+      </div>
 
       {/* Pop-up Message */}
       <AnimatePresence>
@@ -72,4 +82,3 @@ const FinalCard = ({ image, teacherName, studentName, studentClass, onClose }) =
 };
 
 export default FinalCard;
-//og

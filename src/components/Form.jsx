@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
+import "../App.css"
 
 const Form = ({ image, onSubmit }) => {
   const [teacherName, setTeacherName] = useState('');
@@ -93,12 +94,12 @@ const Form = ({ image, onSubmit }) => {
         />
         
         <input
-          type="text"
+          type="number"
           placeholder="Phone Number"
           name="phoneNumber"
           value={phoneNumber}
           onChange={(e) => handleInputChange(e, setPhoneNumber)}
-          className="p-2 border border-gray-300 rounded-md"
+          className="p-2 border border-gray-300 rounded-md appearance-none "
           required
         />
 
