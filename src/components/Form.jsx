@@ -29,8 +29,8 @@ const Form = ({ image, onSubmit }) => {
     if (isFormValid) {
       try {
         // Send data to the API
-        await axios.post('http://localhost:5000/api/form/submit', {
-        // await axios.post('https://kids-backend.onrender.com/api/form/submit', {
+        // await axios.post('http://localhost:5000/api/form/submit', {
+        await axios.post('https://kids-backend.onrender.com/api/form/submit', {
         // await axios.post('https://script.google.com/macros/s/AKfycby4FfabdN1TTTaPn9-5399zSrLaYPffRhNJVsAndKpx9RLA-yP7TJ3ScOGoZRm3iArt/exec', {
           teacherName,
           studentName,
