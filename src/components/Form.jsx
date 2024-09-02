@@ -7,7 +7,7 @@ const Form = ({ image, onSubmit }) => {
   const [teacherName, setTeacherName] = useState('');
   const [studentName, setStudentName] = useState('');
   const [studentClass, setStudentClass] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState(''); // New state for phone number
+  const [phoneNumber, setPhoneNumber] = useState(''); // State for phone number
   const [charCount, setCharCount] = useState({
     teacherName: 0,
     studentName: 0,
@@ -15,11 +15,11 @@ const Form = ({ image, onSubmit }) => {
     phoneNumber: 0, // Track character count for phone number
   });
   const [isFormValid, setIsFormValid] = useState(false);
-  const [isLoading, setIsLoading] = useState(false); // New state for loading
+  const [isLoading, setIsLoading] = useState(false); // State for loading
 
   useEffect(() => {
-    // Check if all fields are filled
-    if (teacherName && studentName && studentClass && phoneNumber) {
+    // Check if all fields are filled and phone number has at least 10 digits
+    if (teacherName && studentName && studentClass && phoneNumber.length >= 10) {
       setIsFormValid(true);
     } else {
       setIsFormValid(false);
@@ -43,8 +43,10 @@ const Form = ({ image, onSubmit }) => {
       } finally {
         setIsLoading(false); // Stop loading
       }
+      onSubmit(teacherName, studentName, studentClass, phoneNumber);
+    } else {
+      alert("Please ensure the phone number has at least 10 digits.");
     }
-    onSubmit(teacherName, studentName, studentClass, phoneNumber);
   };
   
   const handleInputChange = (e, setField) => {
@@ -99,14 +101,14 @@ const Form = ({ image, onSubmit }) => {
           name="phoneNumber"
           value={phoneNumber}
           onChange={(e) => handleInputChange(e, setPhoneNumber)}
-          className="p-2 border border-gray-300 rounded-md appearance-none "
+          className="p-2 border border-gray-300 rounded-md appearance-none"
           required
         />
 
         <button
           type="submit"
           className={`p-2 text-white rounded-md ${isFormValid ? 'bg-black' : 'bg-gray-300 cursor-not-allowed'}`}
-          disabled={!isFormValid || isLoading} // Disable if loading
+          disabled={!isFormValid || isLoading} // Disable if not valid or loading
         >
           {isLoading ? (
             <div className="loader">Submitting...</div> // Spinner when loading
@@ -122,7 +124,7 @@ const Form = ({ image, onSubmit }) => {
         animate="animate"
         exit="exit"
       >
-        🎉 Fill all fields.
+         Fill all fields.
       </motion.div>
     </motion.div>
   );
