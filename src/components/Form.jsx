@@ -14,6 +14,7 @@ const Form = ({ image, onSubmit }) => {
     phoneNumber: 0, // Track character count for phone number
   });
   const [isFormValid, setIsFormValid] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // New state for loading
 
   useEffect(() => {
     // Check if all fields are filled
@@ -27,21 +28,19 @@ const Form = ({ image, onSubmit }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isFormValid) {
+      setIsLoading(true); // Start loading
       try {
         // Send data to the API
-        // await axios.post('http://localhost:5000/api/form/submit', {
         await axios.post('https://kids-backend.onrender.com/api/form/submit', {
-        // await axios.post('https://script.google.com/macros/s/AKfycby4FfabdN1TTTaPn9-5399zSrLaYPffRhNJVsAndKpx9RLA-yP7TJ3ScOGoZRm3iArt/exec', {
           teacherName,
           studentName,
           studentClass,
           phoneNumber,
         });
-        alert('Form submitted successfully!');
-       
       } catch (error) {
         console.error('Error submitting form:', error);
-        alert('Error submitting form');
+      } finally {
+        setIsLoading(false); // Stop loading
       }
     }
     onSubmit(teacherName, studentName, studentClass, phoneNumber);
@@ -106,9 +105,13 @@ const Form = ({ image, onSubmit }) => {
         <button
           type="submit"
           className={`p-2 text-white rounded-md ${isFormValid ? 'bg-black' : 'bg-gray-300 cursor-not-allowed'}`}
-          disabled={!isFormValid}
+          disabled={!isFormValid || isLoading} // Disable if loading
         >
-          Let's build your card
+          {isLoading ? (
+            <div className="loader">Submitting...</div> // Spinner when loading
+          ) : (
+            "Let's build your card"
+          )}
         </button>
       </form>
       <motion.div
