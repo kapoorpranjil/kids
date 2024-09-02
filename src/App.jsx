@@ -88,7 +88,7 @@ const App = () => {
   animate={{ x: 0, opacity: 1 }}
   transition={{ type: 'spring', stiffness: 120, delay: 0.3 }}
 >
-  Thank them for their selflessness. Wish them a very happy Teachers' Day.
+  Thank them for their selflessness. Wish them a very Happy Teachers' Day.
 </motion.h3>
 
 
