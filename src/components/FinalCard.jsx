@@ -25,16 +25,28 @@ const FinalCard = ({ image, teacherName, studentName, studentClass, onClose }) =
 
   return (
     <div className="text-left relative">
-      <div className="mb-4">
-        <label htmlFor="colorPicker" className="mr-2">Choose the color:</label>
-        <input
-          id="colorPicker"
-          type="color"
-          value={textColor}
-          onChange={(e) => setTextColor(e.target.value)}
-          className="cursor-pointer"
-        />
-      </div>
+      <div className="flex items-center justify-between mb-4">
+  <div className="flex items-center space-x-4">
+    <label htmlFor="colorPicker" className="mr-2">Choose the color:</label>
+    <input
+      id="colorPicker"
+      type="color"
+      value={textColor}
+      onChange={(e) => setTextColor(e.target.value)}
+      className="cursor-pointer"
+    />
+  </div>
+  <button
+    onClick={handleDownload}
+    className="p-2 bg-black text-white rounded-md relative overflow-hidden"
+  >
+    Download Card
+  </button>
+</div>
+
+
+
+
 
       <div id="final-card" className="relative inline-block p-4 border-4 border-white rounded-md bg-white">
         {/* Teacher Name Container */}
@@ -49,36 +61,17 @@ const FinalCard = ({ image, teacherName, studentName, studentClass, onClose }) =
         </div>
 
         {/* Student Info Container */}
-        <div className="mt-4 p-2 bg-white rounded-md text-right font-bold">
+        <div className="p-2 bg-white rounded-md text-right font-bold">
           <p style={{ color: textColor }}>From </p>
           <p style={{ color: textColor }}>{studentName}</p>
           <p style={{ color: textColor }}> {studentClass}</p>
         </div>
       </div>
 
-      <div className="flex justify-center mt-4">
-        <button
-          onClick={handleDownload}
-          className="p-2 bg-black text-white rounded-md relative overflow-hidden"
-        >
-          Download Card
-        </button>
-      </div>
+  
 
-      {/* Pop-up Message */}
-      <AnimatePresence>
-        {showPopup && (
-          <motion.div
-            className="absolute top-0 left-0 right-0 mt-4 p-2 bg-blue-500 text-white rounded-md text-center"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
-          >
-            Go it's time to wish 🎉
-          </motion.div>
-        )}
-      </AnimatePresence>
+    
+   
     </div>
   );
 };
