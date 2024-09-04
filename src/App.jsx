@@ -15,6 +15,9 @@ import image8 from './assets/image8.png';
 import image9 from './assets/image9.png';
 import image10 from './assets/image10.png';
 import image11 from './assets/image11.png';
+import image12 from './assets/image12.png';
+import image13 from './assets/image13.png';
+import image14 from './assets/image14.png';
 
 const images = [
   image1,
@@ -28,6 +31,9 @@ const images = [
   image9,
   image10,
   image11,
+  image12,
+  image13,
+  image14,
 ];
 
 const App = () => {

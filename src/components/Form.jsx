@@ -28,15 +28,23 @@ const Form = ({ image, onSubmit }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(image)
+    
+    const fileName = image.split('/').pop()
+    const baseName = fileName.split('.').slice(0, -1).join('.');
+    console.log(baseName)
+  
     if (isFormValid) {
       setIsLoading(true); // Start loading
       try {
         // Send data to the API
-        await axios.post('https://kids-backend.onrender.com/api/form/submit', {
+        // await axios.post('https://kids-backend.onrender.com/api/form/submit', {
+        await axios.post('http://localhost:5000/api/form/submit', {
           teacherName,
           studentName,
           studentClass,
           phoneNumber,
+          baseName,
         });
       } catch (error) {
         console.error('Error submitting form:', error);
